@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Presente de Alicia</title>
+<style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        background: #000;
+        color: #fff;
+        overflow: hidden;
+    }
+    .perfil-fixo {
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        overflow: hidden;
+        z-index: 1000;
+    }
+    .perfil-fixo img { width: 100%; height: 100%; object-fit: cover; }
+
+    .tela-inicial {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .botoes-container {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+        height: 50px;
+        align-items: center;
+    }
+    .btn {
+        padding: 12px 30px;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+        user-select: none;
+        transition: 0.2s;
+    }
+    #btn-sim { background: #0095f6; color: white; }
+    #btn-nao { background: #fff; color: #000; }
+
+    #feed {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        display: none;
+        padding-bottom: 50px;
+    }
+    .post { margin-bottom: 25px; }
+    .post-header { display: flex; align-items: center; padding: 12px; gap: 10px; }
+    .user-thumb {
+        width: 32px; height: 32px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    .user-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .username { font-size: 14px; font-weight: 600; }
+
+    /* CARROSSEL */
+    .carousel-container {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+        border-radius: 3px;
+        margin-top: 5px;
+    }
+    .carousel-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+    .prev-btn, .next-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0,0,0,0.5);
+        color: white;
+        border: none;
+        font-size: 24px;
+        padding: 8px 12px;
+        cursor: pointer;
+        border-radius: 50%;
+        user-select: none;
+    }
+    .prev-btn { left: 10px; }
+    .next-btn { right: 10px; }
+
+    .post-info { padding: 12px; font-size: 14px; }
+    .post-info b { margin-right: 6px; }
+    .img-fallback {
+        background: #222;
+        color: #666;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 4/5;
+        text-align: center;
+        padding: 20px;
+    }
+</style>
+</head>
+<body>
+
+<div class="perfil-fixo">
+    <img src="Alicia.jpeg" alt="Perfil">
+</div>
+
+<section class="tela-inicial" id="tela-inicial">
+    <h1>Seu futuro padrasto?</h1>
+    <div class="botoes-container">
+        <button class="btn" id="btn-sim">Sim</button>
+        <button class="btn" id="btn-nao">Não</button>
+    </div>
+</section>
+
+<main id="feed">
+
+<!-- POST BEIÇO DE MEL -->
+<div class="post">
+    <div class="post-header">
+        <div class="user-thumb"><img src="Perfil B.jpeg"></div>
+        <span class="username">Beiço de mel</span>
+    </div>
+    <div class="carousel-container" data-images='["Beicinho.jpeg","Beicin.jpeg"]'>
+        <img class="post-img" src="Beicinho.jpeg" alt="Beicinho" onerror="imageError(this)">
+        <button class="prev-btn">&#10094;</button>
+        <button class="next-btn">&#10095;</button>
+    </div>
+    <div class="post-info">
+        <b>Beiço de mel</b> Parabéns, pequena! 18 anos já, né? Nem parece! Continua do mesmo tamanho… exagerei 😂 <br><br>
+        Pô, véi… você já está com 18 anos! O tempo passou rápido demais. No começo do ano passado, tínhamos 16; no meio do ano, 17, e agora estamos aqui, vendo você fazer 18. Caramba! <br><br>
+        Feliz aniversário, minha pequena! Que seu novo ciclo e sua nova rotina sejam cheios de coisas boas. Curta muito este ano, viu? A gente está na melhor fase da vida! Valeu, Alicia… senão eu só paro de escrever no dia do seu aniversário, que é hoje, né? 😂🎉💙 <br><br>
+        Que Deus abençoe sua vida, que você tenha muita saúde, paz, felicidade, sucesso e que todos os seus sonhos se realizem. Que este novo ano seja leve, cheio de conquistas e momentos inesquecíveis. Você merece tudo de melhor, Alicia! 💙✨
+    </div>
+</div>
+
+<!-- POST JEFIN -->
+<div class="post">
+    <div class="post-header">
+        <div class="user-thumb"><img src="https://picsum.photos/50/50?102"></div>
+        <span class="username">Jefin do grau</span>
+    </div>
+    <div class="carousel-container" data-images='["Jefin.jpeg","Jefin.jpg"]'>
+        <img class="post-img" src="Jefin.jpeg" alt="Jefin" onerror="imageError(this)">
+        <button class="prev-btn">&#10094;</button>
+        <button class="next-btn">&#10095;</button>
+    </div>
+    <div class="post-info">
+        <b>Jefin do grau</b> Timão e Pumba 🙅🏾‍♂️
+    </div>
+</div>
+
+<!-- POST LETICIA -->
+<div class="post">
+    <div class="post-header">
+        <div class="user-thumb"><img src="Perfil L.jpeg"></div>
+        <span class="username">Leticia</span>
+    </div>
+    <div class="carousel-container" data-images='["Leticia2.jpeg","Leticia.jpeg"]'>
+        <img class="post-img" src="Leticia2.jpeg" alt="Leticia" onerror="imageError(this)">
+        <button class="prev-btn">&#10094;</button>
+        <button class="next-btn">&#10095;</button>
+    </div>
+<div class="post-info">
+    <b>Letícia</b> Feliz aniversário, minha Lilica!!!
+
+    Você é um dos maiores presentes que Deus me deu. Sou extremamente grata por ter você na minha vida. Você está completando 18 anos agora e, desses, 11 passamos juntas. São tantas histórias, tantas risadas, brigas bobas kkkk... Passamos pelo ensino fundamental, pelo ensino médio e agora estamos indo para a faculdade.
+
+    Tenho tanto orgulho de você! Tenho certeza de que vai ter muito sucesso nessa nova fase.
+
+    Te amo muito, minha melhor amiga, quase irmã 🩷🩷
+</div>
+</div>
+
+<!-- POST RAISSA -->
+<div class="post">
+    <div class="post-header">
+        <div class="user-thumb"><img src="perfil R.jpeg"></div>
+        <span class="username">Raissa</span>
+    </div>
+    <div class="carousel-container" data-images='["Raissa.jpeg","Raissa2.jpeg"]'>
+        <img class="post-img" src="Raissa.jpeg" alt="Raissa" onerror="imageError(this)">
+        <button class="prev-btn">&#10094;</button>
+        <button class="next-btn">&#10095;</button>
+    </div>
+    <div class="post-info">
+        <b>Raissa</b> Feliz aniversário para a melhor pessoa do mundo! Não sei se os planos de Deus foram ter te feito filha única para me conceder uma irmã ou o quê, mas eu sei que todos os dias eu agradeço a Ele por ter trazido você para mim. Eu amo a sua companhia e todas as vezes que a gente ri na rua até ficar com a barriga doendo. Tenho um enorme orgulho da mulher que você vem se tornando e creio que você vai ser a melhor psicóloga do mundo.
+        <br><br>
+        Obrigado por sempre me apoiar e me incentivar nas coisas com que eu sempre quis trabalhar; obrigado por estar ao meu lado em todos os momentos da minha vida. Eu te agradeço por todos os dias de choro que eu tive e você esteve ali por mim. Eu te amo, Alicia! Te amo como irmã, como melhor amiga, como conselheira e até mesmo como uma mãe (por todos os sermões que você me dá). 💗
+    </div>
+</div>
+
+<!-- POST NÍCOLAS -->
+<div class="post">
+    <div class="post-header">
+        <div class="user-thumb"><img src="perfil N.jpeg"></div>
+        <span class="username">Nícolas</span>
+    </div>
+    <div class="carousel-container" data-images='["Nicolas.jpeg","Nicolas.jpg"]'>
+        <img class="post-img" src="Nicolas.jpeg" alt="Nícolas" onerror="imageError(this)">
+        <button class="prev-btn">&#10094;</button>
+        <button class="next-btn">&#10095;</button>
+    </div>
+    <div class="post-info">
+        <b>Nícolas</b> Te trouxe poesia no estilo slam <br>  
+        Pois quem diria que um dia eu seria fã  <br>
+        De uma menina tão estranha  <br>
+        E que ainda por cima eu chamaria de irmã.  <br><br>
+        É que hoje é seu aniversário, então devo dizer que sou grato <br> 
+        Grato por sentir orgulho quando te vejo feliz <br>
+        Tipo naquele exame de faixa que quase chantagem pros seus <br>senseis eu fiz kkk <br>  
+        Ou então quando vi que o professor de geografia iria te passar. <br><br>
+        Por mais que eu não goste de dar abraços <br> 
+        E muito menos deixar o braço a torcer <br> 
+        Devo dizer que me arrependeria de não ter entregado aquela <br>atividade de matemática para você. <br><br>
+        Feliz aniversário... <br>
+    </div>
+</div>
+
+</main>
+
+<script>
+const btnSim = document.getElementById('btn-sim');
+const btnNao = document.getElementById('btn-nao');
+const feed = document.getElementById('feed');
+const telaInicial = document.getElementById('tela-inicial');
+
+function imageError(img) {
+    const div = document.createElement('div');
+    div.className = 'img-fallback';
+    div.textContent = `Erro ao carregar imagem`;
+    img.replaceWith(div);
+}
+
+btnNao.addEventListener('mouseover', () => {
+    const x = Math.random() * (window.innerWidth - btnNao.offsetWidth - 50);
+    const y = Math.random() * (window.innerHeight - btnNao.offsetHeight - 50);
+    btnNao.style.position = 'fixed';
+    btnNao.style.left = x + 'px';
+    btnNao.style.top = y + 'px';
+});
+
+btnSim.addEventListener('click', () => {
+    document.body.style.overflow = 'auto';
+    feed.style.display = 'block';
+    setTimeout(() => feed.scrollIntoView({ behavior: 'smooth' }), 100);
+    setTimeout(() => {
+        telaInicial.style.display = 'none';
+        window.scrollTo(0,0);
+    }, 1000);
+});
+
+window.onload = () => {
+    telaInicial.style.display = 'flex';
+    feed.style.display = 'none';
+    document.body.style.overflow = 'hidden';
+    window.scrollTo(0,0);
+};
+
+// CARROSSEL UNIVERSAL
+document.querySelectorAll('.carousel-container').forEach(container => {
+    const images = JSON.parse(container.dataset.images);
+    let index = 0;
+    const imgElement = container.querySelector('img');
+    const prevBtn = container.querySelector('.prev-btn');
+    const nextBtn = container.querySelector('.next-btn');
+
+    function showImage(i) {
+        imgElement.src = images[i];
+    }
+
+    prevBtn.addEventListener('click', () => {
+        index = (index - 1 + images.length) % images.length;
+        showImage(index);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        index = (index + 1) % images.length;
+        showImage(index);
+    });
+});
+</script>
+
+</body>
+</html>
